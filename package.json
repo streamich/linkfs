@@ -1,0 +1,10 @@
+{
+  "name": "linkfs",
+  "version": "0.0.1",
+  "description": "Rewrite `fs` paths",
+  "main": "index.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/streamich/linkfs.git"
+  }
+}
