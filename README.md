@@ -6,7 +6,7 @@ Rewrite file system `fs` paths.
 var linkfs = require('linkfs');
 var fs = require('fs');
 
-var mylinkfs = linkfs(fs, '/mylib.com', __dirname);
+var mylinkfs = linkfs(fs, {'/mylib.com': __dirname});
 // Now you can do:
 console.log(mylinkfs.readFileSync('/mylib.com/index.js').toString());
 ```

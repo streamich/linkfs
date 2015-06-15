@@ -4,7 +4,7 @@ var unionfs = require('../unionfs/index');
 
 
 
-var mylinkfs = linkfs(fs, '/mylib.com', __dirname);
+var mylinkfs = linkfs(fs, {'/mylib.com': __dirname});
 unionfs
     .use(fs)
     .use(mylinkfs)

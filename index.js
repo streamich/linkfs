@@ -56,9 +56,12 @@ var methods = [
 ];
 
 
-function linkfs(fs, from, to, mymethods) {
-    from = path.resolve(from);
-    to = path.resolve(to);
+function linkfs(fs, rewrites, mymethods) {
+    var myrewrites = {};
+    for(var from in rewrites) {
+        myrewrites[path.resolve(from)] = path.resolve(rewrites[from]);
+    }
+
     mymethods = mymethods || methods;
 
     // Rewrite the path of the selected methods.
@@ -69,7 +72,14 @@ function linkfs(fs, from, to, mymethods) {
             linkfs[method] = function() {
                 var filepath = arguments[0];
                 filepath = path.resolve(filepath);
-                filepath = filepath.replace(from, to);
+
+                for(var from in myrewrites) {
+                    if(filepath.indexOf(from) === 0) {
+                        filepath = filepath.replace(from, myrewrites[from]);
+                        break;
+                    }
+                }
+
                 arguments[0] = filepath;
                 return func.apply(fs, arguments);
             };
