@@ -23,5 +23,5 @@ unionfs
     .use(mylinkfs)
     .replace(fs);
     
-require('/mylib.com/index.js);
+require('/mylib.com/index.js');
 ```
