@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["node", "dom", "es2015", "es2016", "es2017"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "removeComments": false,
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "inlineSources": true,
+    "declaration": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true
+  },
+  "inlude": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

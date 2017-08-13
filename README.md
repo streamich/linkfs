@@ -2,7 +2,7 @@
 
 Rewrite file system `fs` paths.
 
-```javascript
+```js
 var linkfs = require('linkfs');
 var fs = require('fs');
 
