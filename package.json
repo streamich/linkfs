@@ -17,10 +17,9 @@
     "type": "git",
     "url": "https://github.com/streamich/linkfs.git"
   },
-  "dependencies": {
-    "fs-monkey": "0.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "memfs": "^2.0.5",
     "mocha": "3.4.2",
     "chai": "4.1.0",
     "typescript": "2.4.2",
