@@ -119,7 +119,7 @@ export function link(fs, rewrites: string[] | string[][]): any {
 
             // If first argument is not a path, just proxy the function.
             if((typeof path !== 'string') && !Buffer.isBuffer(path)) {
-                if(!require('url') || !(path instanceof require('url').URL))
+                if(!require('url').URL || !(path instanceof require('url').URL))
                     return func.apply(fs, args);
             }
 
