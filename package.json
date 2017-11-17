@@ -1,6 +1,6 @@
 {
   "name": "linkfs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Rewrites filesystem paths",
   "main": "lib/index.js",
   "keywords": [
