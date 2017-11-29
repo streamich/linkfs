@@ -2,7 +2,7 @@
 
 Redirects filesystem paths.
 
-[![][npm-img]][npm-url]
+[![][npm-img]][npm-url] [![][travis-badge]][travis-url]
 
     npm install --save linkfs
 
@@ -47,6 +47,8 @@ const lfs = link(fs, [
 [unionfs]: https://github.com/streamich/unionfs
 [linkfs]: https://github.com/streamich/linkfs
 [fs-monkey]: https://github.com/streamich/fs-monkey
+[travis-url]: https://travis-ci.org/streamich/linkfs
+[travis-badge]: https://travis-ci.org/streamich/linkfs.svg?branch=master
 
 
 
