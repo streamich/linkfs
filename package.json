@@ -20,8 +20,8 @@
   "dependencies": {},
   "devDependencies": {
     "memfs": "^2.0.5",
-    "mocha": "3.4.2",
-    "chai": "4.1.0",
+    "jest": "21.2.1",
+    "ts-jest": "21.2.3",
     "typescript": "2.4.2",
     "ts-node": "3.3.0",
     "babel-cli": "6.24.1",
@@ -31,8 +31,7 @@
     "source-map-support": "0.4.15",
     "nyc": "11.1.0",
     "semantic-release": "^8.2.0",
-    "@types/mocha": "2.2.41",
-    "@types/chai": "4.0.1",
+    "@types/jest": "21.1.8",
     "@types/node": "8.0.17"
   },
   "nyc": {
@@ -63,10 +62,19 @@
     "build": "npm run build-ts && npm run build-js",
     "build-ts": "./node_modules/.bin/gulp build-ts",
     "build-js": "./node_modules/.bin/babel src --out-dir lib",
-    "test": "npm run test-coverage",
-    "test-basic": "./node_modules/.bin/mocha --require ts-node/register src/**/*.test.ts",
-    "test-watch": "./node_modules/.bin/mocha --require ts-node/register src/**/*.test.ts --watch",
-    "test-coverage": "nyc --per-file mocha --require ts-node/register --require source-map-support/register --full-trace --bail src/**/*.test.ts",
+    "test": "jest",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": ".*/__tests__/.*\\.(test|spec)\\.(jsx?|tsx?)$"
   }
 }

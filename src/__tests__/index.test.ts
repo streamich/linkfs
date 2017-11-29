@@ -1,13 +1,12 @@
-import {link} from './index';
+import {link} from '../index';
 import {Volume} from 'memfs';
-import {expect} from 'chai';
 
 
 describe('rewrite(fs, rewrites)', () => {
     it('Simple rewrite', () => {
         const vol = Volume.fromJSON({'/foo': 'bar'});
         const lfs = link(vol, ['/lol', '/foo']);
-        expect(lfs.readFileSync('/lol', 'utf8')).to.equal('bar');
+        expect(lfs.readFileSync('/lol', 'utf8')).toBe('bar');
     });
     it('Each path step should be rewritten completely', () => {
         const vol = Volume.fromJSON({'/foo/bar': 'hello'});
@@ -17,7 +16,7 @@ describe('rewrite(fs, rewrites)', () => {
             hello = lfs.readFileSync('/lolo/bar', 'utf8');
             throw Error('This should not throw');
         } catch(err) {
-            expect(err.code).to.equal('ENOENT');
+            expect(err.code).toBe('ENOENT');
         }
     });
     it('Invalid rewrite routes argument throws', () => {
@@ -26,7 +25,7 @@ describe('rewrite(fs, rewrites)', () => {
             const lfs = link(vol, 123 as any);
             throw Error('not_this');
         } catch(err) {
-            expect(err.message === 'not_this').to.be.false;
+            expect(err.message === 'not_this').toBe(false);
         }
     });
     it('Invalid path argument gets proxied', () => {
@@ -36,7 +35,7 @@ describe('rewrite(fs, rewrites)', () => {
             lfs.readFileSync(123, 'utf8');
             throw Error('This should not throw');
         } catch(err) {
-            expect(err.code).to.equal('EBADF');
+            expect(err.code).toBe('EBADF');
         }
     });
 });
