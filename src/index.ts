@@ -1,4 +1,4 @@
-import {resolve} from 'path';
+import {resolve, sep} from 'path';
 
 
 export const props = [
@@ -127,10 +127,18 @@ export function link(fs, rewrites: string[] | string[][]): any {
             let filename = resolve(String(path));
             for(const [from, to] of rews) {
                 if(filename.indexOf(from) === 0) {
-                    // filename = filename.replace(from, to);
-                    const regex = new RegExp('^(' + from.replace(/\\/g, '\\\\') + ')(\\\\|\/|$)');
-                    filename = filename.replace(regex, (match, p1, p2, off, str) => to + p2);
-                }
+                    const rootRegex = /(?:^[a-zA-Z]:\\$)|(?:^\/$)/; // C:\ vs /
+                    const isRoot = from.match(rootRegex);
+                    const baseRegex = '^(' + from.replace(/\\/g, '\\\\') + ')';
+
+                    if(isRoot) {
+                      const regex = new RegExp(baseRegex);
+                      filename = filename.replace(regex, () => to + sep);
+                    } else {
+                      const regex = new RegExp(baseRegex + '(\\\\|\/|$)');
+                      filename = filename.replace(regex, (match, p1, p2) => to + p2);
+                    }
+                  }
             }
 
             args[0] = filename;

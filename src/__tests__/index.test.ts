@@ -8,6 +8,7 @@ describe('rewrite(fs, rewrites)', () => {
         const lfs = link(vol, ['/lol', '/foo']);
         expect(lfs.readFileSync('/lol', 'utf8')).toBe('bar');
     });
+
     it('Each path step should be rewritten completely', () => {
         const vol = Volume.fromJSON({'/foo/bar': 'hello'});
         const lfs = link(vol, ['/lol', '/fo']);
@@ -19,6 +20,7 @@ describe('rewrite(fs, rewrites)', () => {
             expect(err.code).toBe('ENOENT');
         }
     });
+
     it('Invalid rewrite routes argument throws', () => {
         const vol = Volume.fromJSON({'/foo/bar': 'hello'});
         try {
@@ -28,6 +30,7 @@ describe('rewrite(fs, rewrites)', () => {
             expect(err.message === 'not_this').toBe(false);
         }
     });
+
     it('Invalid path argument gets proxied', () => {
         const vol = Volume.fromJSON({'/foo/bar': 'hello'});
         try {
@@ -37,5 +40,23 @@ describe('rewrite(fs, rewrites)', () => {
         } catch(err) {
             expect(err.code).toBe('EBADF');
         }
+    });
+
+    it('rewrites multi-step paths', () => {
+        const vol = Volume.fromJSON({
+            '/1/2/3/4': 'foo'
+        });
+        const lfs = link(vol, ['/lol', '/1/2/3']);
+
+        expect(lfs.readFileSync('/lol/4', 'utf8')).toBe('foo');
+    });
+
+    it('rewrites root path', () => {
+        const vol = Volume.fromJSON({
+            '/1/2/3/4': 'foo'
+        });
+        const lfs = link(vol, ['/', '/1/2/3']);
+
+        expect(lfs.readFileSync('/4', 'utf8')).toBe('foo');
     });
 });
