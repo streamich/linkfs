@@ -95,7 +95,7 @@ export function link(fs, rewrites: string[] | string[][]): any {
     if(!(rewrites instanceof Array))
         throw TypeError('rewrites must be a list of 2-tuples');
 
-    // All for only one tuple to be provided.
+    // If only one tuple is provided.
     if(typeof rewrites[0] === 'string')
         rewrites = [rewrites] as any as [string, string][];
 
@@ -128,7 +128,7 @@ export function link(fs, rewrites: string[] | string[][]): any {
             for(const [from, to] of rews) {
                 if(filename.indexOf(from) === 0) {
                     // filename = filename.replace(from, to);
-                    const regex = new RegExp('^(' + from.replace('\\', '\\\\') + ')(/|$)');
+                    const regex = new RegExp('^(' + from.replace(/\\/g, '\\\\') + ')(\\\\|\/|$)');
                     filename = filename.replace(regex, (match, p1, p2, off, str) => to + p2);
                 }
             }
