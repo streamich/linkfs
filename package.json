@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "memfs": "^2.0.5",
+    "memfs": "2.6.0",
     "jest": "21.2.1",
     "ts-jest": "21.2.3",
     "typescript": "2.4.2",
@@ -30,7 +30,7 @@
     "gulp-typescript": "3.2.1",
     "source-map-support": "0.4.15",
     "nyc": "11.1.0",
-    "semantic-release": "^8.2.0",
+    "semantic-release": "8.2.3",
     "@types/jest": "21.1.8",
     "@types/node": "8.0.17"
   },
