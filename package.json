@@ -22,9 +22,9 @@
     "memfs": "2.6.0",
     "jest": "22.0.4",
     "ts-jest": "22.0.1",
-    "typescript": "2.4.2",
+    "typescript": "2.6.2",
     "ts-node": "4.1.0",
-    "babel-cli": "6.24.1",
+    "babel-cli": "6.26.0",
     "babel-preset-es2015": "6.24.1",
     "gulp": "3.9.1",
     "gulp-typescript": "3.2.3",
@@ -32,7 +32,7 @@
     "nyc": "11.1.0",
     "semantic-release": "11.0.2",
     "@types/jest": "22.0.1",
-    "@types/node": "8.5.8"
+    "@types/node": "9.3.0"
   },
   "nyc": {
     "per-file": true,
