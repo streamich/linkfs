@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "memfs": "2.6.0",
+    "memfs": "2.6.2",
     "jest": "22.0.5",
     "ts-jest": "22.0.1",
     "typescript": "2.6.2",
