@@ -27,7 +27,7 @@
     "babel-cli": "6.26.0",
     "babel-preset-es2015": "6.24.1",
     "gulp": "3.9.1",
-    "gulp-typescript": "3.2.3",
+    "gulp-typescript": "3.2.4",
     "source-map-support": "0.5.2",
     "nyc": "11.4.1",
     "semantic-release": "11.2.0",
