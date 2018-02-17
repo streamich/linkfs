@@ -31,7 +31,7 @@
     "source-map-support": "0.5.3",
     "nyc": "11.4.1",
     "semantic-release": "11.2.0",
-    "@types/jest": "22.1.2",
+    "@types/jest": "22.1.3",
     "@types/node": "9.4.6"
   },
   "nyc": {
