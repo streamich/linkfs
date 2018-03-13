@@ -29,7 +29,7 @@
     "gulp": "3.9.1",
     "gulp-typescript": "3.2.4",
     "source-map-support": "0.5.3",
-    "nyc": "11.4.1",
+    "nyc": "11.6.0",
     "semantic-release": "11.2.0",
     "@types/jest": "22.2.0",
     "@types/node": "9.4.7"
