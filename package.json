@@ -32,7 +32,7 @@
     "nyc": "11.6.0",
     "semantic-release": "11.2.0",
     "@types/jest": "22.2.2",
-    "@types/node": "9.4.7"
+    "@types/node": "9.6.0"
   },
   "nyc": {
     "per-file": true,
