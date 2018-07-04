@@ -20,7 +20,7 @@
   "dependencies": {},
   "devDependencies": {
     "memfs": "2.9.1",
-    "jest": "23.2.0",
+    "jest": "23.3.0",
     "ts-jest": "23.0.0",
     "typescript": "2.9.2",
     "ts-node": "7.0.0",
