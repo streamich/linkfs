@@ -59,4 +59,20 @@ describe('rewrite(fs, rewrites)', () => {
 
         expect(lfs.readFileSync('/4', 'utf8')).toBe('foo');
     });
+
+    it('handles file rename', () => {
+        const vol = Volume.fromJSON({
+            '/1/2/3/4': 'foo'
+        });
+
+        console.log(vol.toJSON());
+
+        const lfs = link(vol, ['/', '/1/2/3']);
+
+        lfs.renameSync('/4', '/5');
+
+        console.log(vol.toJSON());
+
+        expect(lfs.readFileSync('/5', 'utf8')).toBe('foo');
+    })
 });

@@ -66,6 +66,11 @@ export const rewritableMethods = [
     'writeFile',
 ];
 
+export const multiArgumentMethods = [
+    'renameSync',
+    'rename', 
+]
+
 export const proxyableMethods = [
     'ftruncateSync',
     'fchownSync',
@@ -115,33 +120,39 @@ export function link(fs, rewrites: string[] | string[][]): any {
         if(typeof func !== 'function') continue;
 
         lfs[method] = (...args) => {
-            const path = args[0];
+            const multi = multiArgumentMethods.includes(method)
+            const paths = !multi ? [args[0]] : [args[0], args[1]];
 
-            // If first argument is not a path, just proxy the function.
-            if((typeof path !== 'string') && !Buffer.isBuffer(path)) {
-                if(!require('url').URL || !(path instanceof require('url').URL))
-                    return func.apply(fs, args);
-            }
+            for(let index = 0; index <= paths.length; index++) {
+                const path = paths[index];
 
-            // Rewrite the path argument.
-            let filename = resolve(String(path));
-            for(const [from, to] of rews) {
-                if(filename.indexOf(from) === 0) {
-                    const rootRegex = /(?:^[a-zA-Z]:\\$)|(?:^\/$)/; // C:\ vs /
-                    const isRoot = from.match(rootRegex);
-                    const baseRegex = '^(' + from.replace(/\\/g, '\\\\') + ')';
+                // If first argument is not a path, just proxy the function.
+                if((typeof path !== 'string') && !Buffer.isBuffer(path)) {
+                    if(!require('url').URL || !(path instanceof require('url').URL))
+                        return func.apply(fs, args);
+                }
 
-                    if(isRoot) {
-                      const regex = new RegExp(baseRegex);
-                      filename = filename.replace(regex, () => to + sep);
-                    } else {
-                      const regex = new RegExp(baseRegex + '(\\\\|\/|$)');
-                      filename = filename.replace(regex, (match, p1, p2) => to + p2);
+                // Rewrite the path argument.
+                let filename = resolve(String(path));
+                for(const [from, to] of rews) {
+                    if(filename.indexOf(from) === 0) {
+                        const rootRegex = /(?:^[a-zA-Z]:\\$)|(?:^\/$)/; // C:\ vs /
+                        const isRoot = from.match(rootRegex);
+                        const baseRegex = '^(' + from.replace(/\\/g, '\\\\') + ')';
+
+                        if(isRoot) {
+                        const regex = new RegExp(baseRegex);
+                        filename = filename.replace(regex, () => to + sep);
+                        } else {
+                        const regex = new RegExp(baseRegex + '(\\\\|\/|$)');
+                        filename = filename.replace(regex, (match, p1, p2) => to + p2);
+                        }
                     }
-                  }
+                }
+
+                args[index] = filename;
             }
 
-            args[0] = filename;
             return func.apply(fs, args);
         };
     }
