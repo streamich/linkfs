@@ -120,7 +120,7 @@ export function link(fs, rewrites: string[] | string[][]): any {
         if(typeof func !== 'function') continue;
 
         lfs[method] = (...args) => {
-            const multi = multiArgumentMethods.includes(method)
+            const multi = multiArgumentMethods.indexOf(method) !== -1;
             const paths = !multi ? [args[0]] : [args[0], args[1]];
 
             for(let index = 0; index <= paths.length; index++) {
