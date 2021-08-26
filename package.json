@@ -22,7 +22,7 @@
     "memfs": "3.2.2",
     "jest": "27.0.6",
     "ts-jest": "27.0.5",
-    "typescript": "4.3.5",
+    "typescript": "4.4.2",
     "ts-node": "10.2.1",
     "babel-cli": "6.26.0",
     "babel-preset-es2015": "6.24.1",
