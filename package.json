@@ -28,7 +28,7 @@
     "babel-preset-es2015": "6.24.1",
     "gulp": "4.0.2",
     "gulp-typescript": "5.0.1",
-    "source-map-support": "0.5.19",
+    "source-map-support": "0.5.20",
     "nyc": "15.1.0",
     "semantic-release": "17.4.7",
     "@types/jest": "27.0.1",
