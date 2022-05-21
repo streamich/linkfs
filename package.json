@@ -23,7 +23,7 @@
     "jest": "28.1.0",
     "ts-jest": "28.0.2",
     "typescript": "4.6.4",
-    "ts-node": "10.7.0",
+    "ts-node": "10.8.0",
     "babel-cli": "6.26.0",
     "babel-preset-es2015": "6.24.1",
     "gulp": "4.0.2",
