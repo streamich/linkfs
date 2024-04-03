@@ -30,7 +30,7 @@
     "gulp-typescript": "5.0.1",
     "source-map-support": "0.5.21",
     "nyc": "15.1.0",
-    "semantic-release": "23.0.6",
+    "semantic-release": "23.0.7",
     "@types/jest": "29.5.12",
     "@types/node": "9.6.61"
   },
