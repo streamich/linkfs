@@ -21,7 +21,7 @@
   "devDependencies": {
     "memfs": "4.17.0",
     "jest": "29.7.0",
-    "ts-jest": "29.2.5",
+    "ts-jest": "29.2.6",
     "typescript": "5.7.3",
     "ts-node": "10.9.2",
     "babel-cli": "6.26.0",
