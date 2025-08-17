@@ -91,7 +91,7 @@ export const proxyableMethods = [
 ];
 
 
-export function link(fs, rewrites: string[] | string[][]): any {
+export function link<T>(fs: T, rewrites: string[] | string[][]): T {
     if(!(rewrites instanceof Array))
         throw TypeError('rewrites must be a list of 2-tuples');
 
